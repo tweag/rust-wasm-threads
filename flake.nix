@@ -4,7 +4,7 @@
   inputs = {
     utils.url = "github:numtide/flake-utils";
     naersk.url = "github:nix-community/naersk";
-    unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -13,14 +13,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, utils, naersk, rust-overlay, unstable }:
+  outputs = { self, nixpkgs, utils, naersk, rust-overlay }:
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           overlays = [ rust-overlay.overlays.default ];
-          localSystem = { inherit system; };
-        };
-        unstablePkgs = import unstable {
           localSystem = { inherit system; };
         };
         naersk-lib = naersk.lib."${system}";
@@ -37,17 +34,12 @@
           root = ./shared-memory;
         };
 
-        # nix run
-        apps.default = utils.lib.mkApp {
-          drv = packages.default;
-        };
-
         # nix develop
         devShell = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
             python310
             rustToolchain
-            unstablePkgs.rust-analyzer
+            rust-analyzer
             wabt
             wasm-bindgen-cli
             wasm-pack

@@ -8,4 +8,4 @@ class ReqHandler(SimpleHTTPRequestHandler):
         SimpleHTTPRequestHandler.end_headers(self)
 
 if __name__ == '__main__':
-    test(ReqHandler, HTTPServer, port=8001)
+    test(ReqHandler, HTTPServer, port=8000)

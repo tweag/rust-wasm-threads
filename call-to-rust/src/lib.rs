@@ -1,5 +1,4 @@
 use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsCast;
 
 #[wasm_bindgen]
 extern "C" {

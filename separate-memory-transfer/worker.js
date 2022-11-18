@@ -1,4 +1,4 @@
-importScripts('./pkg/separate_memory.js')
+importScripts('./pkg/separate_memory_transfer.js')
 
 const { child_entry_point } = wasm_bindgen;
 

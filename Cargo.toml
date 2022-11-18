@@ -1,0 +1,2 @@
+[workspace]
+members = ["call-to-rust", "separate-memory", "separate-memory-transfer", "shared-memory"]
