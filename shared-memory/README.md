@@ -5,7 +5,7 @@ send a buffer back and forth using a rust channel.
 
 To run this example, `cd` into this directory and then:
 ```sh
-cargo install --version 0.2.81 wasm-bindgen-cli --force
+cargo install --version 0.2.81 wasm-bindgen-cli --force # if you aren't getting it from the nix flake
 cargo build --release
 wasm-bindgen ../target/wasm32-unknown-unknown/release/shared_memory.wasm --target=no-modules --out-dir=pkg
 python ../server.py
